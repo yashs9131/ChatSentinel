@@ -94,9 +94,13 @@ def create_word_cloud(selected_user, df_text):
     df_text["message"] = new_messages
     df_text = df_text[df_text["message"] != ""]
 
-    wc_mask = np.array(Image.open("Images/chat-icon-vector-illustration (2000).jpg"))
+    wc_mask1 = np.array(Image.open("Images/chat-icon-vector-illustration (2000).jpg"))
+    wc_mask2 = np.array(Image.open("Images/chat-icon-vector-illustration (2600).jpg"))
+    wc_mask3 = np.array(Image.open("Images/chat-icon-vector-illustration (3200).jpg"))
 
-    wc = WordCloud(width=1368, height=1024, mask=wc_mask, min_font_size=12, background_color="white")
+    # wc = WordCloud(width=1368, height=1024, mask=wc_mask1, min_font_size=12, background_color="white")
+    wc = WordCloud(width=1368, height=1024, mask=wc_mask2, min_font_size=12, background_color="white")
+    # wc = WordCloud(width=1368, height=1024, mask=wc_mask3, min_font_size=12, background_color="white")
     df_wc = wc.generate(df_text['message'].str.cat(sep=" "))
 
     return df_wc, df_text, df_tags, True
