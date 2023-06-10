@@ -1,4 +1,4 @@
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from urlextract import URLExtract
 from wordcloud import WordCloud
 from collections import Counter

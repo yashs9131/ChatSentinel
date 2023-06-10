@@ -7,9 +7,7 @@ import seaborn as sns
 
 import preprocessor
 import helper
-import nltk
 
-nltk.download("vader_lexicon")
 plt.rcParams['font.size'] = 18
 st.set_page_config(layout="centered")
 
