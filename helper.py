@@ -10,7 +10,7 @@ import emoji
 
 url_extract = URLExtract()
 sia = SentimentIntensityAnalyzer()
-
+nltk.download('vader_lexicon')
 
 def change_user(selected_user, df):
     if selected_user != "General":
