@@ -101,32 +101,25 @@ if uploaded_file is not None:
 
             df_deleted = helper.change_user(selected_user, df_deleted)
             df_emoji = helper.change_user(selected_user, df_emoji)
+            df_text, df_tags = helper.refine_text(selected_user, df_text)
 
             st.title("Key Metrics")
 
             col1, col2, col3, col4 = st.columns(4)
 
             with col1:
-                # st.subheader("Total Messages")
-                # st.title(total_messages)
                 st.markdown('<h3 class="metric-text">Total Messages</h3>', unsafe_allow_html=True)
                 st.markdown(f'<h3 class="metric-num">{total_messages}</h3>', unsafe_allow_html=True)
 
             with col2:
-                # st.subheader("Overall Words")
-                # st.title(words)
                 st.markdown('<h3 class="metric-text">Overall Words</h3>', unsafe_allow_html=True)
                 st.markdown(f'<h3 class="metric-num">{words}</h3>', unsafe_allow_html=True)
 
             with col3:
-                # st.subheader("Multimedia Shared")
-                # st.title(total_media)
                 st.markdown('<h3 class="metric-text">Multimedia Shared</h3>', unsafe_allow_html=True)
                 st.markdown(f'<h3 class="metric-num">{total_media}</h3>', unsafe_allow_html=True)
 
             with col4:
-                # st.subheader("URL Links Shared")
-                # st.title(total_links)
                 st.markdown('<h3 class="metric-text">URL Links Shared</h3>', unsafe_allow_html=True)
                 st.markdown(f'<h3 class="metric-num">{total_links}</h3>', unsafe_allow_html=True)
 
@@ -135,22 +128,18 @@ if uploaded_file is not None:
             with col1:
                 st.markdown('<h3 class="metric-text">Deleted Messages</h3>', unsafe_allow_html=True)
                 st.markdown(f'<h3 class="metric-num">{df_deleted.shape[0]}</h3>', unsafe_allow_html=True)
-                # st.title(df_deleted.shape[0])
 
             with col2:
                 st.markdown('<h3 class="metric-text": blue;">Overall Emojis</h3>', unsafe_allow_html=True)
                 st.markdown(f'<h3 class="metric-num">{df_emoji.shape[0]}</h3>', unsafe_allow_html=True)
-                # st.title(df_emoji.shape[0])
 
             with col3:
                 st.markdown('<h3 class="metric-text">Total Times Tagged</h3>', unsafe_allow_html=True)
                 st.markdown(f'<h3 class="metric-num">{tags_len}</h3>', unsafe_allow_html=True)
-                # st.title(tags_len)
 
             with col4:
                 st.markdown('<h3 class="metric-text">Contacts Shared</h3>', unsafe_allow_html=True)
                 st.markdown(f'<h3 class="metric-num">{con_len}</h3>', unsafe_allow_html=True)
-                # st.title(con_len)
 
             st.title("Activity Calender")
             # TIMELINE
@@ -250,8 +239,6 @@ if uploaded_file is not None:
                             ax7.pie(activity_pct, radius=2, autopct='%1.2f%%', startangle=30)
                             ax7.legend(activity_pct.index, loc="center left", bbox_to_anchor=(1, 0, 0.5, 2.5))
                             st.pyplot(fig7, dip=200, bbox_inches="tight")
-
-            df_text, df_tags = helper.refine_text(selected_user, df)
 
             if shape != "No WordCloud":
                 # Word Cloud
