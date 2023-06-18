@@ -12,7 +12,7 @@ plt.rcParams['font.size'] = 18
 
 st.set_page_config(
     page_title="Chat Sentinel",
-    layout="wide",
+    layout="centered",
     initial_sidebar_state="expanded",
 )
 
