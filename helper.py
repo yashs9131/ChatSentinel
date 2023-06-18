@@ -11,6 +11,7 @@ import emoji
 url_extract = URLExtract()
 sia = SentimentIntensityAnalyzer()
 
+
 def change_user(selected_user, df):
     if selected_user != "General":
         df = df[df["user"] == selected_user]
@@ -66,7 +67,7 @@ def message_frequency(df):
     return df["user"].value_counts(), ratio
 
 
-def create_word_cloud(selected_user, df_text):
+def create_word_cloud(selected_user, df_text, mask):
     df_text = change_user(selected_user, df_text)
 
     indices = []
@@ -94,11 +95,17 @@ def create_word_cloud(selected_user, df_text):
     df_text["message"] = new_messages
     df_text = df_text[df_text["message"] != ""]
 
-    wc_mask = np.array(Image.open("Images/chat-icon-vector-illustration (2600).jpg"))
+    if mask == "Square":
+        wc = WordCloud(width=1368, height=1024, min_font_size=12, background_color="white")
+    else:
+        if mask == "Thought Cloud":
+            wc_mask = np.array(Image.open("wc_masks/chat-icon-vector-illustration (2600).jpg"))
+            wc = WordCloud(width=1368, height=1024, mask=wc_mask, min_font_size=12, background_color="white")
+        else:
+            wc_mask = np.array(Image.open("wc_masks/OIP (1902).png"))
+            wc = WordCloud(width=1368, height=1024, mask=wc_mask, min_font_size=12, background_color="white")
 
-    wc = WordCloud(width=1368, height=1024, mask=wc_mask, min_font_size=12, background_color="white")
     df_wc = wc.generate(df_text['message'].str.cat(sep=" "))
-
     return df_wc, df_text, df_tags, True
 
 
