@@ -9,7 +9,13 @@ import preprocessor
 import helper
 
 plt.rcParams['font.size'] = 18
-# st.set_page_config(layout="centered")
+
+st.set_page_config(
+    page_title="Chat Sentinel",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
 st.markdown(
     """
     <style>
