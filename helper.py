@@ -14,7 +14,7 @@ sia = SentimentIntensityAnalyzer()
 
 def change_user(selected_user, df):
     if selected_user != "General":
-        df = df[df["user"] == selected_user]
+        df = df[df["user"] == selected_user].reset_index(drop=True)
     return df
 
 
@@ -67,8 +67,8 @@ def message_frequency(df):
     return df["user"].value_counts(), ratio
 
 
-def create_word_cloud(selected_user, df_text, mask):
-    df_text = change_user(selected_user, df_text)
+def refine_text(selected_user, df):
+    df = change_user(selected_user, df)
 
     indices = []
     new_messages = []
@@ -77,9 +77,9 @@ def create_word_cloud(selected_user, df_text, mask):
     with open("./stop_words.txt", "r", encoding="utf-8") as file:
         stop_words = file.read().splitlines()
 
-    for i in range(df_text.shape[0]):
+    for i in range(df.shape[0]):
         words = []
-        for word in df_text["message"][i].lower().split():
+        for word in df["message"][i].lower().split():
             if word[0] == "@" and len(word) != 1:
                 if i not in indices:
                     indices.append(i)
@@ -91,27 +91,29 @@ def create_word_cloud(selected_user, df_text, mask):
         denumbered = [word for word in cleaned if not word.isdigit()]
         new_messages.append(" ".join(denumbered))
 
-    df_tags = df_text.iloc[indices, :].reset_index(drop=True)
-    df_text["message"] = new_messages
-    df_text = df_text[df_text["message"] != ""]
+    df_tags = df.iloc[indices, :].reset_index(drop=True)
+    df["message"] = new_messages
+    df_text = df[df["message"] != ""]
+    return  df_text, df_tags
+
+
+def create_word_cloud(df_text, mask):
 
     if mask == "Square":
         wc = WordCloud(width=1368, height=1024, min_font_size=12, background_color="white")
     else:
         if mask == "Thought Cloud":
-            wc_mask = np.array(Image.open("wc_masks/chat-icon-vector-illustration (2600).jpg"))
+            wc_mask = np.array(Image.open("icons/chat-icon-vector-illustration (2600).jpg"))
             wc = WordCloud(width=1368, height=1024, mask=wc_mask, min_font_size=12, background_color="white")
         else:
-            wc_mask = np.array(Image.open("wc_masks/OIP (1902).png"))
+            wc_mask = np.array(Image.open("icons/OIP (1902).png"))
             wc = WordCloud(width=1368, height=1024, mask=wc_mask, min_font_size=12, background_color="white")
 
     df_wc = wc.generate(df_text['message'].str.cat(sep=" "))
-    return df_wc, df_text, df_tags, True
+    return df_wc, True
 
 
-def most_common_words(selected_user, df_text):
-    df_text = change_user(selected_user, df_text)
-
+def most_common_words(df_text):
     words = []
     for message in df_text["message"]:
         for word in message.split():
@@ -120,8 +122,7 @@ def most_common_words(selected_user, df_text):
     return pd.DataFrame(Counter(words).most_common(20), columns=["word", "frequency"])
 
 
-def emoji_helper(selected_user, df_emoji):
-    df_emoji = change_user(selected_user, df_emoji)
+def emoji_helper(df_emoji):
 
     emojis = []
     for message in df_emoji["message"]:
@@ -212,9 +213,8 @@ def message_sa(message):
         return "Neutral"
 
 
-def sentiment_analysis(selected_user, df):
-    df = change_user(selected_user, df)
-    df_sa = df[["user", "message"]]
+def sentiment_analysis(df_text):
+    df_sa = df_text[["user", "message"]]
     df_sa["sentiments"] = df_sa["message"].apply(message_sa)
     df_sa = df_sa[df_sa["sentiments"] != "Neutral"]
     df_sa.sort_values(by=["sentiments"], ascending=True, inplace=True)

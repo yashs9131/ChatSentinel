@@ -50,16 +50,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# c1, c2 = st.columns((1, 4))
-# c1.title("Chat Sentinel")
-# c2.image("./icons/i2/logo.png")
 
-# st.image("./icons/i3/logo.png")
-# st.image("./icons/i3/facebook_cover_photo_2.png")
-# st.image("./icons/i3/youtube_profile_image.png")
-# st.image(image="./icons/i1/pinterest_profile_image.png")
-st.image(image="./icons/i2/logo.png")
-# st.image(image="./icons/i3/pinterest_profile_image.png")
+st.image(image="./icons/logo.png")
 
 # st.text("Decoding Emotions, Empowering Connections!")
 wc_loaded = False
@@ -68,7 +60,7 @@ wc_loaded = False
 time_format = st.sidebar.radio('Provide your time format', ['24 hour clock', '12 hour clock'])
 uploaded_file = st.sidebar.file_uploader("Choose a file from your device")
 
-# st.text(time_format)
+
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
     data = bytes_data.decode("utf-8")
@@ -81,7 +73,6 @@ if uploaded_file is not None:
     else:
         # Fetch unique users
         user_list = list(df['user'].unique())
-        # user_list.remove("Notification")
         user_list.sort()
         user_list.insert(0, "General")
 
@@ -91,9 +82,12 @@ if uploaded_file is not None:
             selected_user = st.selectbox("Provide if you want a general or user specific analysis", user_list)
 
         with tab2:
-            analyses = st.multiselect("Mark the Analyses you want to see",
-                                      ["Activity", "Frequency", "Content", "Sentiment"])
-
+            if selected_user == "General":
+                analyses = st.multiselect("Mark the Analyses you want to see",
+                                          ["Activity", "Frequency", "Content", "Sentiment"])
+            else:
+                analyses = st.multiselect("Mark the Analyses you want to see",
+                                          ["Activity", "Content", "Sentiment"])
         with tab3:
             shape = st.radio("Pick the shape of your wordcloud",
                              ["Square", "Thought Cloud", "Whatsapp Logo", "No WordCloud"])
@@ -257,10 +251,12 @@ if uploaded_file is not None:
                             ax7.legend(activity_pct.index, loc="center left", bbox_to_anchor=(1, 0, 0.5, 2.5))
                             st.pyplot(fig7, dip=200, bbox_inches="tight")
 
+            df_text, df_tags = helper.refine_text(selected_user, df)
+
             if shape != "No WordCloud":
                 # Word Cloud
                 st.title("Word Cloud")
-                word_cloud, df_text, df_tags, wc_loaded = helper.create_word_cloud(selected_user, df_text, shape)
+                word_cloud, wc_loaded = helper.create_word_cloud(df_text, shape)
                 fig8, ax8 = plt.subplots()
                 ax8.imshow(word_cloud, interpolation='bilinear')
                 plt.axis("off")
@@ -281,7 +277,7 @@ if uploaded_file is not None:
                 st.title("Content Analysis")
                 # Most common words
                 st.header("Words of Choice")
-                df_freq = helper.most_common_words(selected_user, df_text)
+                df_freq = helper.most_common_words(df_text)
                 fig9, ax9 = plt.subplots(figsize=(12, 9))
                 sns.set_style("white")
                 sns.barplot(data=df_freq, y="word", x="frequency", ax=ax9, palette="dark:#1D9_r")
@@ -295,7 +291,7 @@ if uploaded_file is not None:
                 st.pyplot(fig9)
 
                 # Emoji Analysis
-                emoji_set = helper.emoji_helper(selected_user, df_emoji)
+                emoji_set = helper.emoji_helper(df_emoji)
 
                 # Defining the font family for emoji display
                 emoji_font = {"fontname": "Segoe UI Emoji"}
@@ -317,7 +313,7 @@ if uploaded_file is not None:
 
                 if selected_user == "General":
                     if len(user_list) > 5:
-                        df_sa = helper.sentiment_analysis(selected_user, df_text)
+                        df_sa = helper.sentiment_analysis(df_text)
                         fig11, ax11 = plt.subplots(figsize=(12, 9))
                         sns.countplot(data=df_sa, x="user", hue="sentiments", palette=["tab:red", "tab:green"], ax=ax11)
                         plt.xticks(rotation="vertical", fontsize=16)
@@ -327,7 +323,7 @@ if uploaded_file is not None:
                         st.pyplot(fig11)
 
                     elif len(user_list) < 6:
-                        df_sa = helper.sentiment_analysis(selected_user, df_text)
+                        df_sa = helper.sentiment_analysis(df_text)
                         fig11, ax11 = plt.subplots(figsize=(12, 9))
                         sns.countplot(data=df_sa, x="user", hue="sentiments", palette=["tab:red", "tab:green"], ax=ax11)
                         ax11.set_xlabel("Members", fontsize=22)
@@ -335,7 +331,7 @@ if uploaded_file is not None:
                         st.pyplot(fig11)
 
                 else:
-                    df_sa = helper.sentiment_analysis(selected_user, df_text)
+                    df_sa = helper.sentiment_analysis(df_text)
                     fig11, ax11 = plt.subplots(figsize=(12, 9))
                     sns.countplot(data=df_sa, x="sentiments", palette=["tab:red", "tab:green"], ax=ax11)
                     plt.title(f"Sentiments of {selected_user}", fontsize=32)
