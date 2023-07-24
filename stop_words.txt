@@ -1,8 +1,10 @@
 a
+aa
 aadi
 aaj
 aap
 aapne
+aare
 aata
 aati
 aaya
@@ -175,6 +177,7 @@ bolti
 both
 brief
 bro
+bs
 bt
 bta
 btw
@@ -341,6 +344,8 @@ greetings
 gya
 gyi
 h
+ha
+haa
 haan
 had
 hadd
@@ -521,6 +526,7 @@ kahan
 kahi
 kahin
 kahte
+kai
 kaisa
 kaise
 kaisi
@@ -586,6 +592,7 @@ kitni
 kitno
 kiya
 kiye
+kl
 know
 known
 knows
@@ -594,6 +601,7 @@ koi
 kon
 konsa
 koyi
+kr
 kra
 krdo
 krdena
@@ -736,6 +744,7 @@ nevertheless
 new
 next
 nhi
+ni
 nine
 no
 nobody
@@ -756,6 +765,7 @@ of
 off
 often
 oh
+ohk
 ok
 okay
 old
@@ -779,6 +789,7 @@ over
 overall
 own
 p
+pr
 par
 pata
 pe
@@ -841,9 +852,11 @@ saara
 saare
 saath
 sab
+sabh
 sabhi
 sabse
 sahi
+sai
 said
 sakta
 saktaa
@@ -991,12 +1004,16 @@ trying
 tu
 tujhe
 tum
+tumhe
+tumhi
 tumhara
 tumhare
 tumhari
 tune
 twice
 two
+srry
+sry
 u
 um
 umm
