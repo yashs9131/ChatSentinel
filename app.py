@@ -147,7 +147,7 @@ if uploaded_file is not None:
                 st.markdown('<h3 class="metric-text">Contacts Shared</h3>', unsafe_allow_html=True)
                 st.markdown(f'<h3 class="metric-num">{con_len}</h3>', unsafe_allow_html=True)
 
-            st.title("Activity Calender")
+            st.title("Activity Calendar")
             # TIMELINE
             # 1. Monthly Timeline
             st.header("Monthly Activity")
