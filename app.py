@@ -81,7 +81,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image(image="./icons/logo.png")
+h1, h2, h3 = st.columns((1,4.5,1))
+with h2:
+    st.image(image="./icons/logo.png")
 
 selected = option_menu(None, ["Home", "Launch"],
     # Possible icons - arrow-up-square, arrow-up-circle-fill, rocket-takeoff, rocket
