@@ -8,36 +8,49 @@ def preprocess(data, time_format):
 
     pattern = ""
     if time_format == "12 hour clock":
-        pattern = "\d{1,2}\/\d{2,4}\/\d{2,4},\s\d{1,2}:\d{1,2}\s\w{2}\s-\s"
+        pattern = "\d{1,4}\/\d{1,4}\/\d{1,4},\s\d{1,2}:\d{1,2}\s\w{2}\s-\s"
     elif time_format == "24 hour clock":
-        pattern = "\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}\s-\s"
+        pattern = "\d{1,4}/\d{1,4}/\d{1,4},\s\d{1,2}:\d{1,2}\s-\s"
     user_messages = re.split(pattern, data)[1:]
     dates = re.findall(pattern, data)
 
     df = pd.DataFrame({"user_message": user_messages, "message_date": dates})
 
     if time_format == "24 hour clock":
-        try:
+        try:  # DD/MM/YY, HH:MM -
             df["message_date"] = pd.to_datetime(df["message_date"], format='%d/%m/%y, %H:%M - ')
         except ValueError:
-            try:
-                df["message_date"] = pd.to_datetime(df["message_date"], format='%d/%m/%Y, %H:%M - ')
+            try:  # MM/DD/YY, HH:MM -
+                df["message_date"] = pd.to_datetime(df["message_date"], format='%m/%d/%y, %H:%M - ')
             except ValueError:
-                try:
+                try:  # MM/DD/YYYY, HH:MM -
                     df["message_date"] = pd.to_datetime(df["message_date"], format='%m/%d/%Y, %H:%M - ')
-                except ValueError:
-                    df["message_date"] = pd.to_datetime(df["message_date"], format='%m/%d/%y, %H:%M - ')
+                except ValueError: # DD/MM/YYYY, HH:MM -
+                    df["message_date"] = pd.to_datetime(df["message_date"], format='%d/%m/%Y, %H:%M - ')
+
     elif time_format == "12 hour clock":
-        try:
-            df["message_date"] = pd.to_datetime(df["message_date"], format='%d/%m/%y, %I:%M %p - ')
+        try:  # DD/MM/YY, hh:mm (AM/PM) -
+            df["message_date"] = pd.to_datetime(df["message_date"], format='%d/%m/%y, %-I:%M %p - ')
         except ValueError:
-            try:
-                df["message_date"] = pd.to_datetime(df["message_date"], format='%d/%m/%Y, %I:%M %p - ')
+            try:  # DD/MM/YY, hh:mm (AM/PM) -
+                df["message_date"] = pd.to_datetime(df["message_date"], format='%m/%d/%y, %-I:%M %p - ')
             except ValueError:
-                try:
-                    df["message_date"] = pd.to_datetime(df["message_date"], format='%m/%d/%Y, %I:%M %p - ')
+                try: # MM/DD/YYYY, hh:mm (AM/PM) -
+                    df["message_date"] = pd.to_datetime(df["message_date"], format='%m/%d/%Y, %-I:%M %p - ')
                 except ValueError:
-                    df["message_date"] = pd.to_datetime(df["message_date"], format='%m/%d/%y, %I:%M %p - ')
+                    try:  # DD/MM/YYYY, hh:mm (AM/PM) -
+                        df["message_date"] = pd.to_datetime(df["message_date"], format='%d/%m/%Y, %-I:%M %p - ')
+                    except ValueError:
+                        try:  # DD/MM/YY, hh:mm (AM/PM) -
+                            df["message_date"] = pd.to_datetime(df["message_date"], format='%d/%m/%y, %I:%M %p - ')
+                        except ValueError:
+                            try:  # DD/MM/YY, hh:mm (AM/PM) -
+                                df["message_date"] = pd.to_datetime(df["message_date"], format='%m/%d/%y, %I:%M %p - ')
+                            except ValueError:
+                                try:  # MM/DD/YYYY, hh:mm (AM/PM) -
+                                    df["message_date"] = pd.to_datetime(df["message_date"], format='%m/%d/%Y, %I:%M %p - ')
+                                except ValueError:  # DD/MM/YYYY, hh:mm (AM/PM) -
+                                    df["message_date"] = pd.to_datetime(df["message_date"], format='%d/%m/%Y, %I:%M %p - ')
 
     df.rename(columns={"message_date": "date"}, inplace=True)
 
