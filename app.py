@@ -1,7 +1,8 @@
-from io import BytesIO
-from datetime import datetime
 from streamlit_option_menu import option_menu
+from datetime import datetime
+from io import BytesIO
 
+import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 import streamlit as st
 import seaborn as sns
@@ -9,17 +10,10 @@ import seaborn as sns
 import preprocessor
 import helper
 
+font_filename = './NotoEmoji-VariableFont_wght.ttf'
+custom_font = fm.FontProperties(fname=font_filename)
+
 plt.rcParams['font.size'] = 18
-
-import matplotlib.font_manager as fm
-
-# List all available fonts
-font_list = fm.findSystemFonts(fontpaths=None, fontext="ttf")
-
-# Print the list of fonts
-for font_path in font_list:
-    print(font_path)
-
 
 st.set_page_config(
     page_title="Chat Sentinel",
@@ -419,16 +413,13 @@ else:
                     # Emoji Analysis
                     emoji_set = helper.emoji_helper(df_emoji)
 
-                    # Defining the font family for emoji display
-                    emoji_font = {"fontname": "Noto Color Emoji"}
-
                     st.header("Excessive Emojis")
                     fig10, ax10 = plt.subplots(figsize=(12, 9))
                     sns.barplot(data=emoji_set, y="count", x="emoji", ax=ax10)
                     ax10.set_xticklabels(emoji_set["emoji"].tolist(), rotation=0)
                     sns.despine()
                     plt.grid(visible=True, linewidth=1, axis="y")
-                    plt.xticks(fontsize=20, **emoji_font)
+                    plt.xticks(fontsize=20, fontproperties=custom_font)
                     plt.yticks(fontsize=14)
                     plt.xlabel("")
                     plt.ylabel("")
