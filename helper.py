@@ -11,6 +11,15 @@ import emoji
 url_extract = URLExtract()
 sia = SentimentIntensityAnalyzer()
 
+import matplotlib.font_manager as fm
+
+# List all available fonts
+font_list = fm.findSystemFonts(fontpaths=None, fontext="ttf")
+
+# Print the list of fonts
+for font_path in font_list:
+    print(font_path)
+
 
 def change_user(selected_user, df):
     if selected_user != "General":
