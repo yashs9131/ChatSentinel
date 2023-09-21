@@ -11,6 +11,16 @@ import helper
 
 plt.rcParams['font.size'] = 18
 
+import matplotlib.font_manager as fm
+
+# List all available fonts
+font_list = fm.findSystemFonts(fontpaths=None, fontext="ttf")
+
+# Print the list of fonts
+for font_path in font_list:
+    print(font_path)
+
+
 st.set_page_config(
     page_title="Chat Sentinel",
     layout="centered"
