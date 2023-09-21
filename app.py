@@ -410,7 +410,7 @@ else:
                     emoji_set = helper.emoji_helper(df_emoji)
 
                     # Defining the font family for emoji display
-                    emoji_font = {"fontname": "Segoe UI Emoji"}
+                    emoji_font = {"fontname": "Noto Emoji"}
 
                     st.header("Excessive Emojis")
                     fig10, ax10 = plt.subplots(figsize=(12, 9))

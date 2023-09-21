@@ -159,14 +159,15 @@ def daily_timeline(selected_user, df):
 def activity_per_day(selected_user, df):
     df = change_user(selected_user, df)
 
-    day_list = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    day_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    day_counts = df["day_name"].value_counts().loc[day_order]
 
-    df_day = pd.DataFrame(df["day_name"].value_counts(), columns=["day_name"])
-    df_day["day_num"] = [(day_list.index(day) + 1) for day in df_day.index]
-    df_day.sort_values(by="day_num", inplace=True)
-    df_day.index = [x[:3] for x in df_day.index]
+    # Create a DataFrame with day names and counts
+    df_d = pd.DataFrame({"day_name": day_counts, "day_num": range(1, 8)})
+    # Create a shorter label for the days
+    df_d.index = [x[:3] for x in df_d.index]
 
-    return df_day
+    return df_d
 
 
 def activity_per_month(selected_user, df):
