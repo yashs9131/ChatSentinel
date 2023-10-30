@@ -274,7 +274,7 @@ else:
                         st.subheader("Each Day")
                         df_d = helper.activity_per_day(selected_user, df)
                         fig3, ax3 = plt.subplots(figsize=(14, 12))
-                        ax3.bar(df_d.index, df_d["day_name"], color=["c", "y"])
+                        ax3.bar(df_d.index, df_d["day_freq"], color=["c", "y"])
                         plt.xticks(fontsize=36)
                         plt.yticks(fontsize=32)
                         st.pyplot(fig3)

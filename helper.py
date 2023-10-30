@@ -160,10 +160,14 @@ def activity_per_day(selected_user, df):
     df = change_user(selected_user, df)
 
     day_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    day_counts = df["day_name"].value_counts().loc[day_order]
 
-    # Create a DataFrame with day names and counts
-    df_d = pd.DataFrame({"day_name": day_counts, "day_num": range(1, 8)})
+    day_counts = df["day_name"].value_counts()
+    day_counts_map = {day: day_counts.get(day, 0) for day in day_order}
+
+    # Create the DataFrame from the day_counts_map
+    df_d = pd.DataFrame({"day_freq": day_counts_map.values(), "day_num": range(1, len(day_counts_map) + 1)},
+                        index=day_counts_map.keys())
+    df_d = df_d[df_d['day_freq'] != 0]
     # Create a shorter label for the days
     df_d.index = [x[:3] for x in df_d.index]
 
