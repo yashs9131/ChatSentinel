@@ -28,8 +28,8 @@ def fetch_stats(selected_user, df):
     total_messages = df.shape[0]
 
     # 2. Fetch total number of media messages
-    total_media = df[(df["message"] == "<Media omitted>\n") | (df["message"] == "<Video message omitted>\n")].shape[0]
-    df_text = df[(df["message"] != "<Media omitted>\n") & (df["message"] != "<Video message omitted>\n")].reset_index(drop=True)
+    total_media = df[(df["message"] == "<Media omitted>\n") | (df["message"] == "<Video message omitted>\n") | (df["message"] == "<Video note omitted>\n")].shape[0]
+    df_text = df[(df["message"] != "<Media omitted>\n") & (df["message"] != "<Video message omitted>\n") & (df["message"] != "<Video note omitted>\n")].reset_index(drop=True)
 
 
     # 3. Fetch total number of links shared
