@@ -1,7 +1,7 @@
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from streamlit_option_menu import option_menu
 from datetime import datetime
 from io import BytesIO
-
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 import streamlit as st
