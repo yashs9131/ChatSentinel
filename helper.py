@@ -9,7 +9,7 @@ import emoji
 
 import nltk
 nltk.download('vader_lexicon')
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 url_extract = URLExtract()
 sia = SentimentIntensityAnalyzer()
