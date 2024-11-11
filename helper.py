@@ -8,6 +8,9 @@ import numpy as np
 import string
 import emoji
 
+import nltk
+nltk.download('vader_lexicon')
+
 url_extract = URLExtract()
 sia = SentimentIntensityAnalyzer()
 

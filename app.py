@@ -10,6 +10,9 @@ import seaborn as sns
 import preprocessor
 import helper
 
+# Initialize the Sentiment Analyzer
+sia = SentimentIntensityAnalyzer()
+
 font_filename = './NotoEmoji-VariableFont_wght.ttf'
 custom_font = fm.FontProperties(fname=font_filename)
 
