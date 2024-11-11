@@ -85,22 +85,17 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-h1, h2, h3 = st.columns((1,4.5,1))
+h1, h2, h3 = st.columns((1, 4.5, 1))
 with h2:
     st.image(image="./icons/logo.png")
 
 selected = option_menu(None, ["Home", "Launch"],
-    # Possible icons - arrow-up-square, arrow-up-circle-fill, rocket-takeoff, rocket
     icons=['house', 'rocket-takeoff'],
     menu_icon="cast", default_index=0, orientation="horizontal",
     styles={
-    # "container": the container div of the entire menu
         "container": {"padding": "0!important", "background-color": "#fafafa"},
-    # "icon": the icon next to each option
         "icon": {"color": "#ff9e3a", "font-size": "1.5rem", "margin-right": "1vw"},
-    # "nav-link": the <a> element containing the text of each option
         "nav-link": {"font-size": "1.2rem", "text-align": "center", "margin":"0px"},
-    # "nav-link-selected": the <a> element containing the text of the selected option
         "nav-link-selected": {"background-color": "#174fa7"}
     }
 )
@@ -138,7 +133,6 @@ if selected == "Home":
     <p class="content"> We uphold <b>strict data privacy standards</b>. Your client data is <b>never stored</b>; any uploaded files are promptly deleted when you leave our website. </p>
     <p class="content"> Feel free to try this out yourself and hit the <b>Launch</b> tab on the top of our homepage </p>
     """, unsafe_allow_html=True)
-
 
 else:
     time_format = st.sidebar.radio('Provide your time format', ['24 hour clock', '12 hour clock'])
@@ -212,7 +206,7 @@ else:
                     st.markdown(f'<h3 class="metric-num">{df_deleted.shape[0]}</h3>', unsafe_allow_html=True)
 
                 with col2:
-                    st.markdown('<h3 class="metric-text": blue;">Overall Emojis</h3>', unsafe_allow_html=True)
+                    st.markdown('<h3 class="metric-text">Overall Emojis</h3>', unsafe_allow_html=True)
                     st.markdown(f'<h3 class="metric-num">{df_emoji.shape[0]}</h3>', unsafe_allow_html=True)
 
                 with col3:
@@ -224,11 +218,10 @@ else:
                     st.markdown(f'<h3 class="metric-num">{con_len}</h3>', unsafe_allow_html=True)
 
                 with st.expander("What is this?"):
-                    st.markdown("""<p class="content">We\'ve counted everything: total messages, word acrobatics, media sharing, URL links, 
+                    st.markdown("""<p class="content">We've counted everything: total messages, word acrobatics, media sharing, URL links, 
                     deleted messages (the vanishing act), emojis (those mood-makers), total times tagged and contacts 
                     shared. Your chat history is now a delightful mix of insights and laughter! </p>""",
                     unsafe_allow_html=True)
-
 
                 st.title("Activity Calendar")
                 # TIMELINE
@@ -236,24 +229,24 @@ else:
                 st.header("Monthly Activity")
                 df_m_timeline = helper.monthly_timeline(selected_user, df)
                 fig1, ax1 = plt.subplots(figsize=(18, 11))
-                sns.scatterplot(ax=ax1, data=df_m_timeline, x="time", y="message", c="mediumblue")
-                plt.plot("time", "message", data=df_m_timeline, c="brown")
+                sns.scatterplot(ax=ax1, data=df_m_timeline, x="time", y="message", color="mediumblue")
+                plt.plot("time", "message", data=df_m_timeline, color="brown")
                 plt.xlabel("")
                 plt.xticks(rotation=90, fontsize=22)
                 plt.grid(visible=True, linewidth=1, axis="x")
                 plt.ylabel("")
                 st.pyplot(fig1)
                 with st.expander("What is this?"):
-                    st.markdown("""<p class="content">Take a peek at our \"Monthly Activity\" graph to track how message 
-                    traffic evolves month by month in your chat. It\'s like having a chat calendar that shows you when 
+                    st.markdown("""<p class="content">Take a peek at our "Monthly Activity" graph to track how message 
+                    traffic evolves month by month in your chat. It's like having a chat calendar that shows you when 
                     conversations heat up or cool down over time.</p>""", unsafe_allow_html=True)
 
                 # 2. Daily Timeline
                 st.header("Daily Activity")
                 df_d_timeline = helper.daily_timeline(selected_user, df)
                 fig2, ax2 = plt.subplots(figsize=(18, 11))
-                sns.scatterplot(ax=ax2, data=df_d_timeline, x="only_date", y="message", c="mediumblue")
-                plt.plot("only_date", "message", data=df_d_timeline, c="brown")
+                sns.scatterplot(ax=ax2, data=df_d_timeline, x="only_date", y="message", color="mediumblue")
+                plt.plot("only_date", "message", data=df_d_timeline, color="brown")
                 plt.grid(visible=True, linewidth=1)
                 plt.xlabel("")
                 plt.xticks(fontsize=22)
@@ -261,8 +254,8 @@ else:
                 plt.ylabel("")
                 st.pyplot(fig2)
                 with st.expander("What is this?"):
-                    st.markdown("""<p class="content">With our \"Daily Activity\" graph, you can zoom in on daily message traffic patterns. 
-                    Discover which days are bustling with chatter and which ones are more relaxed. It\'s your daily 
+                    st.markdown("""<p class="content">With our "Daily Activity" graph, you can zoom in on daily message traffic patterns. 
+                    Discover which days are bustling with chatter and which ones are more relaxed. It's your daily 
                     chat diary, making it easier to understand your communication dynamics.</p>""", unsafe_allow_html=True)
 
                 # Traffic
@@ -279,20 +272,19 @@ else:
                         plt.yticks(fontsize=32)
                         st.pyplot(fig3)
                         with st.expander("What is this?"):
-                            st.markdown("""<p class="content">Dive into our \"Each Day\" analysis to see when messages are sent during the 
-                            week. It\'s like a chat calendar showing which days are the liveliest.</p>""", unsafe_allow_html=True)
+                            st.markdown("""<p class="content">Dive into our "Each Day" analysis to see when messages are sent during the 
+                            week. It's like a chat calendar showing which days are the liveliest.</p>""", unsafe_allow_html=True)
 
                     with col2:
                         st.subheader("Each Month")
                         df_m = helper.activity_per_month(selected_user, df)
                         fig4, ax4 = plt.subplots(figsize=(14, 12))
                         ax4.bar(df_m.index, df_m["month_name"], color=["tab:blue", "tab:purple", "tab:pink"])
-                        # st.dataframe(df_month)
                         plt.xticks(fontsize=26)
                         plt.yticks(fontsize=32)
                         st.pyplot(fig4)
                         with st.expander("What is this?"):
-                            st.markdown("""<p class="content">Explore \"Each Month\" to discover trends in message sending over the year. 
+                            st.markdown("""<p class="content">Explore "Each Month" to discover trends in message sending over the year. 
                             Spot any monthly patterns or changes in user activity, like a weather report for your 
                             chat engagement!</p>""", unsafe_allow_html=True)
 
@@ -306,7 +298,7 @@ else:
                     with st.expander("What is this?"):
                         st.markdown("""<p class="content">Imagine a colorful map that shows when people chat the most during the week, 
                         hour by hour. Our Activity Heatmap helps you spot busy times and any regular patterns in your 
-                        chat activity. It/'s like a weather map for your chat engagement!</p>""", unsafe_allow_html=True)
+                        chat activity. It's like a weather map for your chat engagement!</p>""", unsafe_allow_html=True)
 
                 if "Frequency" in analyses:
                     # Finding the most active users in the group
@@ -324,7 +316,7 @@ else:
                             plt.title("Most Talkative Members")
                             st.pyplot(fig6)
                             with st.expander("What is this?"):
-                                st.markdown("""<p class="content">The \"Most Active Members\" plot lists users who send the most messages, 
+                                st.markdown("""<p class="content">The "Most Active Members" plot lists users who send the most messages, 
                                 from top to bottom. It's like a leaderboard of the chattiest folks!</p>""", unsafe_allow_html=True)
 
                             st.subheader("Contribution in Conversation")
@@ -332,23 +324,23 @@ else:
                             ax7.pie(activity_pct, radius=4, pctdistance=0.8, autopct="%1.2f%%", startangle=30)
                             ax7.legend(activity_pct.index, fontsize=32, loc="center left",
                                        bbox_to_anchor=(2.15, 0, 0.5, 3.25))
-                            st.pyplot(fig7, dip=600, bbox_inches="tight")
+                            st.pyplot(fig7, dpi=600, bbox_inches="tight")
                             with st.expander("What is this?"):
-                                st.markdown("""<p class="content">The \"Contribution in Conversation\" plot uses a pie chart to show how 
-                                different members participate in the chat. You\'ll get a visual breakdown of who\'s 
-                                doing the talking. It\'s like a chat conversation in a pie slice!</p>""", unsafe_allow_html=True)
+                                st.markdown("""<p class="content">The "Contribution in Conversation" plot uses a pie chart to show how 
+                                different members participate in the chat. You'll get a visual breakdown of who's 
+                                doing the talking. It's like a chat conversation in a pie slice!</p>""", unsafe_allow_html=True)
 
                         elif len(user_list) < 6:
                             col1, col2 = st.columns(2)
 
                             with col1:
                                 st.subheader("Most Talkative Members")
-                                sns.barplot(x=user_freq.index, y=user_freq.values, ax=ax6)
+                                sns.barplot(x=user_freq.index, y=user_freq.values, ax=ax6, palette="viridis")
                                 plt.xticks(rotation="vertical", fontsize=32)
                                 ax6.set_ylabel("No. of Messages", fontsize=36)
                                 st.pyplot(fig6)
                                 with st.expander("What is this?"):
-                                    st.markdown("""<p class="content">The \"Most Active Members\" plot lists users who send the most messages, 
+                                    st.markdown("""<p class="content">The "Most Active Members" plot lists users who send the most messages, 
                                     from top to bottom. It's like a leaderboard of the chattiest folks!</p>""", unsafe_allow_html=True)
 
                             with col2:
@@ -356,9 +348,9 @@ else:
                                 fig7, ax7 = plt.subplots()
                                 ax7.pie(activity_pct, radius=2, autopct='%1.2f%%', startangle=30)
                                 ax7.legend(activity_pct.index, loc="center left", bbox_to_anchor=(1, 0, 0.5, 2.5))
-                                st.pyplot(fig7, dip=200, bbox_inches="tight")
+                                st.pyplot(fig7, dpi=200, bbox_inches="tight")
                                 with st.expander("What is this?"):
-                                    st.markdown("""<p class="content">The \"Ratio of Activity\" graph examines message distribution among 
+                                    st.markdown("""<p class="content">The "Ratio of Activity" graph examines message distribution among 
                                     WhatsApp group members, providing insights into their engagement levels. This 
                                     visual representation reveals individual contributions to group conversations, 
                                     offering valuable data on group dynamics and member involvement.</p>""", unsafe_allow_html=True)
@@ -372,9 +364,9 @@ else:
                     plt.axis("off")
                     st.pyplot(fig8, dpi=600)
                     with st.expander("What is this?"):
-                        st.markdown("""<p class="content">Picture this as a colorful cloud of words! We\'ve taken out the common words and 
-                        created a playful visual where word size shows how often they\'re used. The bigger, the more 
-                        frequent. It\'s like a word party where the popular words steal the show. Our "Word Cloud"
+                        st.markdown("""<p class="content">Picture this as a colorful cloud of words! We've taken out the common words and 
+                        created a playful visual where word size shows how often they're used. The bigger, the more 
+                        frequent. It's like a word party where the popular words steal the show. Our "Word Cloud"
                         feature offers various shapes to visualize your chat content. Try them out for a unique and 
                         visually engaging perspective on your conversations.</p>""", unsafe_allow_html=True)
                     if wc_loaded:
@@ -406,16 +398,16 @@ else:
                     plt.title('Top 20 Words', fontsize=22)
                     st.pyplot(fig9)
                     with st.expander("What is this?"):
-                        st.markdown("""<p class="content">Get ready to uncover the chat\'s star words! We\'ve sorted through the chatter to 
-                        find the top 20 words that pop up the most. It\'s like a highlight reel of the hottest chat 
-                        topics. Let\'s see what everyone\'s been talking about!</p>""", unsafe_allow_html=True)
+                        st.markdown("""<p class="content">Get ready to uncover the chat's star words! We've sorted through the chatter to 
+                        find the top 20 words that pop up the most. It's like a highlight reel of the hottest chat 
+                        topics. Let's see what everyone's been talking about!</p>""", unsafe_allow_html=True)
 
                     # Emoji Analysis
                     emoji_set = helper.emoji_helper(df_emoji)
 
                     st.header("Excessive Emojis")
                     fig10, ax10 = plt.subplots(figsize=(12, 9))
-                    sns.barplot(data=emoji_set, y="count", x="emoji", ax=ax10)
+                    sns.barplot(data=emoji_set, y="count", x="emoji", ax=ax10, palette="autumn")
                     ax10.set_xticklabels(emoji_set["emoji"].tolist(), rotation=0)
                     sns.despine()
                     plt.grid(visible=True, linewidth=1, axis="y")
@@ -425,8 +417,8 @@ else:
                     plt.ylabel("")
                     st.pyplot(fig10)
                     with st.expander("What is this?"):
-                        st.markdown("""<p class="content">Discover the chat\'s emoji superstars! We\'ve rounded up the 
-                        ten most-used emojis, each with its own count. It\'s like a peek into the emotional 
+                        st.markdown("""<p class="content">Discover the chat's emoji superstars! We've rounded up the 
+                        ten most-used emojis, each with its own count. It's like a peek into the emotional 
                         roller-coaster and expressions of your chat participants. Get ready to decode 
                         the emoji vibes!</p>""", unsafe_allow_html=True)
 
@@ -461,8 +453,7 @@ else:
                         st.pyplot(fig11)
 
                     with st.expander("What is this?"):
-                        st.markdown("""<p class="content">We\'re decoding the chat\'s emotional rollercoaster! Dive into the spectrum of 
+                        st.markdown("""<p class="content">We're decoding the chat's emotional rollercoaster! Dive into the spectrum of 
                         feelings with vibrant green bars for positive vibes and striking red bars for not-so-happy 
-                        moments. This visual insight reveals the emotional tone of the conversation and who\'s 
-                        contributing to the chat\'s overall mood.</p>""", unsafe_allow_html=True)
-
+                        moments. This visual insight reveals the emotional tone of the conversation and who's 
+                        contributing to the chat's overall mood.</p>""", unsafe_allow_html=True)
