@@ -1,4 +1,3 @@
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from urlextract import URLExtract
 from wordcloud import WordCloud
 from collections import Counter
@@ -10,6 +9,7 @@ import emoji
 
 import nltk
 nltk.download('vader_lexicon')
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 url_extract = URLExtract()
 sia = SentimentIntensityAnalyzer()
