@@ -23,6 +23,13 @@ st.set_page_config(
     layout="centered"
 )
 
+# Initialize session state for sample file and uploaded file
+if 'sample_file_loaded' not in st.session_state:
+    st.session_state.sample_file_loaded = False
+    st.session_state.uploaded_file = None
+if 'preprocessed_data' not in st.session_state:
+    st.session_state.preprocessed_data = None
+
 wc_loaded = False
 
 st.markdown(
@@ -141,15 +148,30 @@ else:
     time_format = st.sidebar.radio('Provide your time format', ['24 hour clock', '12 hour clock'])
     uploaded_file = st.sidebar.file_uploader("Choose a file from your device")
 
+    # Use uploaded file or sample file if no file is uploaded
     if uploaded_file is not None:
-        bytes_data = uploaded_file.getvalue()
-        data = bytes_data.decode("utf-8")
-        df, df_deleted, df_emoji = preprocessor.preprocess(data, time_format)
+        file_to_use = uploaded_file
+    else:
+        with open("sample.txt", "r", encoding="utf-8") as file:
+            sample_chat = file.read()
+        file_to_use = BytesIO(sample_chat.encode("utf-8"))
+
+    # Process the file
+    if file_to_use is not None:
+        if st.session_state.preprocessed_data is None or file_to_use != st.session_state.uploaded_file:
+            bytes_data = file_to_use.getvalue()
+            data = bytes_data.decode("utf-8")
+            df, df_deleted, df_emoji = preprocessor.preprocess(data, time_format)
+            st.session_state.preprocessed_data = (df, df_deleted, df_emoji)
+            st.session_state.uploaded_file = file_to_use
+        else:
+            df, df_deleted, df_emoji = st.session_state.preprocessed_data
+
 
         # For wrong input
         if df.shape[0] == 0:
-            st.error("Either the uploaded file is not a whatsapp chat export file or the chosen time format is wrong. "
-                     "Please upload a whatsapp chat or choose the correct time format.")
+            st.error("Either the uploaded file is not a WhatsApp chat export file or the chosen time format is wrong. "
+                     "Please upload a WhatsApp chat or choose the correct time format.")
         else:
             # Fetch unique users
             user_list = list(df['user'].unique())
@@ -176,9 +198,8 @@ else:
             with sidebar_c1:
                 clicked = st.button("Analyze")
             if clicked:
-                total_messages, words, total_media, total_links, tags_len, df_text, con_len = \
-                    helper.fetch_stats(selected_user, df)
-
+                (total_messages, words, total_media, total_media_notes, links, tags_len, df_text, con_len,
+                 total_calls) = helper.fetch_stats(selected_user, df)
                 df_deleted = helper.change_user(selected_user, df_deleted)
                 df_emoji = helper.change_user(selected_user, df_emoji)
                 df_text, df_tags = helper.refine_text(selected_user, df_text)
@@ -200,35 +221,38 @@ else:
 
                 with col4:
                     st.markdown('<h3 class="metric-text">URL Links Shared</h3>', unsafe_allow_html=True)
-                    st.markdown(f'<h3 class="metric-num">{total_links}</h3>', unsafe_allow_html=True)
+                    st.markdown(f'<h3 class="metric-num">{links}</h3>', unsafe_allow_html=True)
 
-                col1, col2, col3, col4 = st.columns(4)
+                col5, col6, col7, col8 = st.columns(4)
 
-                with col1:
+                with col5:
                     st.markdown('<h3 class="metric-text">Deleted Messages</h3>', unsafe_allow_html=True)
                     st.markdown(f'<h3 class="metric-num">{df_deleted.shape[0]}</h3>', unsafe_allow_html=True)
 
-                with col2:
+                with col6:
                     st.markdown('<h3 class="metric-text">Overall Emojis</h3>', unsafe_allow_html=True)
                     st.markdown(f'<h3 class="metric-num">{df_emoji.shape[0]}</h3>', unsafe_allow_html=True)
 
-                with col3:
+                with col7:
                     st.markdown('<h3 class="metric-text">Total Times Tagged</h3>', unsafe_allow_html=True)
                     st.markdown(f'<h3 class="metric-num">{tags_len}</h3>', unsafe_allow_html=True)
 
-                with col4:
+                with col8:
                     st.markdown('<h3 class="metric-text">Contacts Shared</h3>', unsafe_allow_html=True)
                     st.markdown(f'<h3 class="metric-num">{con_len}</h3>', unsafe_allow_html=True)
 
-                with st.expander("What is this?"):
-                    st.markdown("""<p class="content">We've counted everything: total messages, word acrobatics, media sharing, URL links, 
-                    deleted messages (the vanishing act), emojis (those mood-makers), total times tagged and contacts 
-                    shared. Your chat history is now a delightful mix of insights and laughter! </p>""",
-                    unsafe_allow_html=True)
+                col9, col10 = st.columns(2)
+
+                with col9:
+                    st.markdown('<h3 class="metric-text">Voice and Video Calls</h3>', unsafe_allow_html=True)
+                    st.markdown(f'<h3 class="metric-num">{total_calls}</h3>', unsafe_allow_html=True)
+
+                with col10:
+                    st.markdown('<h3 class="metric-text">Voice and Video Notes</h3>', unsafe_allow_html=True)
+                    st.markdown(f'<h3 class="metric-num">{total_media_notes}</h3>', unsafe_allow_html=True)
 
                 st.title("Activity Calendar")
-                # TIMELINE
-                # 1. Monthly Timeline
+                # Monthly Timeline
                 st.header("Monthly Activity")
                 df_m_timeline = helper.monthly_timeline(selected_user, df)
                 fig1, ax1 = plt.subplots(figsize=(18, 11))
@@ -244,7 +268,7 @@ else:
                     traffic evolves month by month in your chat. It's like having a chat calendar that shows you when 
                     conversations heat up or cool down over time.</p>""", unsafe_allow_html=True)
 
-                # 2. Daily Timeline
+                # Daily Timeline
                 st.header("Daily Activity")
                 df_d_timeline = helper.daily_timeline(selected_user, df)
                 fig2, ax2 = plt.subplots(figsize=(18, 11))
@@ -384,7 +408,6 @@ else:
                                 mime="image/png")
 
                 if "Content" in analyses:
-
                     st.title("Content Analysis")
                     # Most common words
                     st.header("Words of Choice")
@@ -421,9 +444,9 @@ else:
                     st.pyplot(fig10)
                     with st.expander("What is this?"):
                         st.markdown("""<p class="content">Discover the chat's emoji superstars! We've rounded up the 
-                        ten most-used emojis, each with its own count. It's like a peek into the emotional 
-                        roller-coaster and expressions of your chat participants. Get ready to decode 
-                        the emoji vibes!</p>""", unsafe_allow_html=True)
+                            ten most-used emojis, each with its own count. It's like a peek into the emotional 
+                            roller-coaster and expressions of your chat participants. Get ready to decode 
+                            the emoji vibes!</p>""", unsafe_allow_html=True)
 
                 if "Sentiment" in analyses:
                     st.title("Sentiment Analysis")
@@ -432,7 +455,8 @@ else:
                         if len(user_list) > 5:
                             df_sa = helper.sentiment_analysis(df_text)
                             fig11, ax11 = plt.subplots(figsize=(12, 9))
-                            sns.countplot(data=df_sa, x="user", hue="sentiments", palette=["tab:red", "tab:green"], ax=ax11)
+                            sns.countplot(data=df_sa, x="user", hue="sentiments", palette=["tab:red", "tab:green"],
+                                          ax=ax11)
                             plt.xticks(rotation="vertical", fontsize=16)
                             ax11.set_xticklabels(ax11.get_xticklabels(), rotation=50, horizontalalignment='right')
                             ax11.set_xlabel("")
@@ -442,7 +466,8 @@ else:
                         elif len(user_list) < 6:
                             df_sa = helper.sentiment_analysis(df_text)
                             fig11, ax11 = plt.subplots(figsize=(12, 9))
-                            sns.countplot(data=df_sa, x="user", hue="sentiments", palette=["tab:red", "tab:green"], ax=ax11)
+                            sns.countplot(data=df_sa, x="user", hue="sentiments", palette=["tab:red", "tab:green"],
+                                          ax=ax11)
                             ax11.set_xlabel("Members", fontsize=22)
                             ax11.set_ylabel("No. of Messages", fontsize=22)
                             st.pyplot(fig11)
@@ -457,6 +482,7 @@ else:
 
                     with st.expander("What is this?"):
                         st.markdown("""<p class="content">We're decoding the chat's emotional rollercoaster! Dive into the spectrum of 
-                        feelings with vibrant green bars for positive vibes and striking red bars for not-so-happy 
-                        moments. This visual insight reveals the emotional tone of the conversation and who's 
-                        contributing to the chat's overall mood.</p>""", unsafe_allow_html=True)
+                            feelings with vibrant green bars for positive vibes and striking red bars for not-so-happy 
+                            moments. This visual insight reveals the emotional tone of the conversation and who's 
+                            contributing to the chat's overall mood.</p>""", unsafe_allow_html=True)
+

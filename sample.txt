@@ -1,0 +1,198 @@
+01/01/21, 10:00 - User1: Happy New Year everyone!
+01/01/21, 10:05 - User2: Happy New Year!
+01/01/21, 10:10 - User3: Wishing you all the best!
+01/01/21, 10:15 - User1: Let's make this year amazing.
+01/01/21, 10:20 - User4: Happy New Year! What are everyone's plans for today?
+01/01/21, 10:22 - User2: Not much, just relaxing at home.
+01/01/21, 10:25 - User3: I'm thinking of going for a walk later.
+01/01/21, 10:30 - User1: Sounds nice, it's a great day for a walk.
+01/01/21, 10:35 - User4: Totally agree! Anyone else up for it?
+01/01/21, 10:40 - User2: Maybe, I need to see if I can get free.
+01/01/21, 10:45 - User3: Cool, let us know!
+03/01/21, 11:00 - User1: Morning everyone!
+03/01/21, 11:05 - User2: Morning!
+03/01/21, 11:10 - User3: Good morning 😊
+03/01/21, 11:15 - User4: Morning guys, any plans today?
+03/01/21, 11:20 - User1: I was thinking of starting a new book.
+03/01/21, 11:25 - User2: That's a good idea. I might catch up on some reading too.
+03/01/21, 11:30 - User3: I need to finish the book I started last week.
+03/01/21, 11:35 - User4: Which books are you all reading?
+03/01/21, 11:40 - User1: I'm starting "The Alchemist".
+03/01/21, 11:45 - User2: Nice choice! I'm reading "Sapiens".
+03/01/21, 11:50 - User3: I'm halfway through "1984" by George Orwell.
+03/01/21, 11:55 - User4: I've heard good things about all of those. I might pick one next.
+07/01/21, 18:00 - User1: Hi all, any update on trivia night?
+07/01/21, 18:10 - User2: Yes, we should pick a date!
+07/01/21, 18:15 - User3: How about next Saturday evening?
+07/01/21, 18:20 - User4: That works for me!
+07/01/21, 18:25 - User1: Great, it's a plan then. I'll prepare some questions.
+07/01/21, 18:30 - User2: Awesome, can't wait!
+10/01/21, 20:00 - User1: Trivia night was so much fun! Thanks for joining everyone.
+10/01/21, 20:05 - User3: It really was! I had a great time.
+10/01/21, 20:10 - User4: Best night of the year so far 😂
+10/01/21, 20:15 - User2: Haha, definitely. We should do it again soon.
+01/02/21, 09:00 - User1: Good morning everyone, happy new month!
+01/02/21, 09:05 - User2: Happy February!
+01/02/21, 09:10 - User3: This year is already flying by.
+01/02/21, 09:15 - User4: I know, right? Any goals for this month?
+01/02/21, 09:20 - User1: I want to exercise more regularly.
+01/02/21, 09:25 - User2: Same here! Let's keep each other motivated.
+01/02/21, 09:30 - User3: I'll join you both. Time to get fit!
+01/02/21, 09:35 - User4: Count me in too. Group motivation works best.
+14/02/21, 14:00 - User1: Happy Valentine's Day, everyone! ❤️
+14/02/21, 14:05 - User2: Happy Valentine's Day! 😊
+14/02/21, 14:10 - User3: Hope you all have a lovely day!
+14/02/21, 14:15 - User4: Sending lots of love to all of you!
+20/02/21, 16:00 - User1: Anyone watched any good movies lately?
+20/02/21, 16:05 - User2: I watched "Soul" recently, it was really good.
+20/02/21, 16:10 - User3: Oh, I heard it's amazing. I need to watch it.
+20/02/21, 16:15 - User4: I watched "The Trial of the Chicago 7". Highly recommend it.
+20/02/21, 16:20 - User1: Great suggestions, adding them to my list!
+28/02/21, 10:00 - User1: Good morning and happy last day of February!
+28/02/21, 10:05 - User2: Morning! 😊
+28/02/21, 10:10 - User3: Any plans for today?
+28/02/21, 10:15 - User4: Relaxing today. How about you?
+28/02/21, 10:20 - User1: Same here. A chill Sunday is perfect.
+05/03/21, 15:00 - User1: Hi everyone, who wants to have a trivia night again?
+05/03/21, 15:05 - User2: I'm in! Let's do it!
+05/03/21, 15:10 - User3: Same here. It was so much fun last time.
+05/03/21, 15:15 - User4: Count me in too! When are we doing it?
+05/03/21, 15:20 - User1: How about next Friday evening?
+05/03/21, 15:25 - User2: Works for me!
+05/03/21, 15:30 - User3: Same here.
+12/03/21, 19:00 - User1: Trivia night time, everyone ready?
+12/03/21, 19:05 - User2: Let's go!
+12/03/21, 19:10 - User3: I'm ready!
+12/03/21, 19:15 - User4: Bring it on!
+25/03/21, 21:00 - User1: Thanks for joining trivia night again! You all are amazing.
+25/03/21, 21:05 - User2: It was so much fun as always.
+25/03/21, 21:10 - User3: We should have a themed trivia night next time.
+25/03/21, 21:15 - User4: Yes! Maybe a music-themed trivia?
+01/04/21, 09:00 - User1: Good morning, everyone! Welcome to April.
+01/04/21, 09:05 - User2: Morning! Can't believe it's already April.
+01/04/21, 09:10 - User3: Time flies! Any April Fool's pranks yet? 😂
+01/04/21, 09:15 - User4: Haha, not yet, but the day is young!
+15/04/21, 18:00 - User1: How's everyone doing today?
+15/04/21, 18:05 - User2: Doing good! Just finished a workout. Feeling tired but accomplished.
+15/04/21, 18:10 - User3: Same here! Did some cardio today.
+15/04/21, 18:15 - User4: I need to start working out too. You all are inspiring me. 😅
+15/04/21, 18:20 - User1: Let's do a virtual workout session sometime!
+10/05/21, 17:00 - User1: Who's up for trivia this weekend?
+10/05/21, 17:05 - User2: Yes, count me in!
+10/05/21, 17:10 - User3: I'm in!
+10/05/21, 17:15 - User4: Me too. Let's do it on Saturday evening again.
+15/05/21, 19:00 - User1: Trivia time, everyone!
+15/05/21, 19:05 - User2: Ready to win this time. 😁
+15/05/21, 19:10 - User3: Haha, bring it on!
+15/05/21, 19:15 - User4: Let's do this!
+25/05/21, 21:00 - User1: Thanks for joining trivia again, friends. I always have so much fun.
+25/05/21, 21:05 - User2: It's always a blast!
+25/05/21, 21:10 - User3: Agreed! Should we do one more next month?
+25/05/21, 21:15 - User4: Yes, we definitely should!
+05/06/21, 13:00 - User2: It's so hot today!
+05/06/21, 13:05 - User4: I know, right? Feels like summer came in full force.
+05/06/21, 13:10 - User1: I’m staying indoors with the AC on. 😂
+05/06/21, 13:15 - User3: Same here. Too hot to be outside.
+10/06/21, 17:00 - User1: Ice cream, anyone?
+10/06/21, 17:05 - User2: Yes, please!
+10/06/21, 17:10 - User3: I'm in! Let's grab some this weekend.
+10/06/21, 17:15 - User4: Perfect idea for this heat.
+20/06/21, 14:00 - User3: Did anyone start their summer reading list yet?
+20/06/21, 14:05 - User1: Yes! I just started "Atomic Habits".
+20/06/21, 14:10 - User2: I've heard great things about that book.
+20/06/21, 14:15 - User4: I should get started on my reading list too.
+02/07/21, 10:00 - User1: Good morning! Welcome to July!
+02/07/21, 10:05 - User2: Morning! Can't wait for summer fun!
+02/07/21, 10:10 - User3: Same here, lots of plans this summer.
+02/07/21, 10:15 - User4: I want to take a small road trip.
+02/07/21, 10:20 - User1: That sounds great. I want to relax and read a lot.
+15/07/21, 15:00 - User3: Who's excited for the hike this weekend?
+15/07/21, 15:05 - User1: I am! Got my gear ready.
+15/07/21, 15:10 - User2: Ready to go!
+15/07/21, 15:15 - User4: Can't wait to enjoy nature with you all.
+30/07/21, 20:00 - User1: Thanks for joining trivia again! Should we do a cooking night soon?
+30/07/21, 20:05 - User2: Yes! That sounds amazing.
+30/07/21, 20:10 - User3: Count me in. We could bake something.
+30/07/21, 20:15 - User4: Yes, let's bake cookies next time!
+05/08/21, 09:00 - User1: Good morning, everyone! 🌞 Happy August!
+05/08/21, 09:05 - User2: Good morning! @User1, thanks! Can't wait to see what this month brings.
+05/08/21, 09:10 - User3: Morning all! 😊 Any goals for August?
+05/08/21, 09:15 - User4: @User3 I want to bake more this month 🍰
+05/08/21, 09:20 - User1: Baking sounds fun! I want to learn how to make sourdough bread.
+10/08/21, 16:00 - User2: @User4 I tried baking cookies again today! They came out so much better this time.
+10/08/21, 16:05 - User4: Yay! That's awesome 🎉 Practice makes perfect, @User2!
+10/08/21, 16:10 - User3: Maybe we should all bake something together sometime. Like a virtual bake-off! 😂
+10/08/21, 16:15 - User1: @User3 I love that idea! Let's do it soon.
+15/08/21, 18:00 - User1: Anyone up for a trivia night this weekend? 🤔
+15/08/21, 18:05 - User2: I'm in! @User3 @User4 What about you two?
+15/08/21, 18:10 - User3: Count me in @User2! Trivia nights are always fun.
+15/08/21, 18:15 - User4: Same here! Let’s make it happen.
+20/08/21, 17:00 - User1: How's everyone's day going? I've been so busy at work. Can't wait for the weekend! 😩
+20/08/21, 17:05 - User2: I feel you @User1. Been a long week for me too. Ready for a break!
+20/08/21, 17:10 - User3: @User1 @User2 Hang in there, folks! Almost there 💪
+20/08/21, 17:15 - User4: Sending positive vibes to you all! We got this! 💖
+01/09/21, 10:00 - User1: Happy September, everyone! 🍂
+01/09/21, 10:05 - User3: It's fall already? 🍁 Time flies!
+01/09/21, 10:10 - User2: I know! Excited for cozy sweaters and pumpkin spice lattes! ☕
+01/09/21, 10:15 - User4: Me too! Let's plan a fall hike soon to enjoy the colors. 🍃
+05/09/21, 14:00 - User1: @User3 did you manage to finish that book you were reading?
+05/09/21, 14:05 - User3: @User1 Not yet 😅 Almost there though. Might finish it tonight.
+05/09/21, 14:10 - User2: Which book is it again?
+05/09/21, 14:15 - User3: It's "The Midnight Library". Really good so far!
+10/09/21, 17:00 - User4: Hey everyone! I baked brownies today 🍫 Anyone wants the recipe?
+10/09/21, 17:05 - User1: @User4 Yes, please! I’ve been craving brownies lately.
+10/09/21, 17:10 - User2: @User4 I'd love the recipe too. Brownies are my weakness 😂
+15/09/21, 19:00 - User1: @User2 @User3 @User4 Trivia night this Friday? Who’s up for it? 🧠
+15/09/21, 19:05 - User2: I'm always ready for trivia! 🙌
+15/09/21, 19:10 - User3: @User1 Count me in!
+15/09/21, 19:15 - User4: You know I'm in! Let’s do it 😁
+01/10/21, 09:00 - User1: Good morning! October is finally here 🎃
+01/10/21, 09:05 - User2: Happy spooky season! 👻 Anyone has Halloween costume ideas yet?
+01/10/21, 09:10 - User3: @User2 I'm thinking of going as a wizard 🧙‍♂️
+01/10/21, 09:15 - User4: I might do a classic vampire 🧛‍♀️ What about you @User1?
+01/10/21, 09:20 - User1: I’m thinking of being a pirate! 🏴‍☠️
+10/10/21, 15:00 - User1: @User4 I tried baking your brownies today. They turned out delicious! Thank you 🍫
+10/10/21, 15:05 - User4: Yay! So happy to hear that, @User1 😊
+10/10/21, 15:10 - User2: @User1 You gotta save some for us next time 😜
+15/10/21, 20:00 - User3: How's everyone preparing for Halloween? 👻
+15/10/21, 20:05 - User2: I've got some decorations ready! Gonna carve pumpkins this weekend 🎃
+15/10/21, 20:10 - User4: I love pumpkin carving! @User2 make sure to share pictures.
+15/10/21, 20:15 - User1: @User4 Are we doing a virtual pumpkin carving together?
+01/11/21, 10:00 - User1: Good morning, everyone! November is here 🍁
+01/11/21, 10:05 - User2: Morning @User1! Thanksgiving is around the corner 🦃
+01/11/21, 10:10 - User3: Can’t wait to eat lots of food! 🍗
+01/11/21, 10:15 - User4: @User3 Same here! I’m already planning my feast 😂
+15/11/21, 14:00 - User1: Has anyone started their holiday shopping yet? 🎁
+15/11/21, 14:05 - User2: @User1 Nope, but I should! Black Friday is coming up.
+15/11/21, 14:10 - User3: I already started @User1. Trying to avoid last-minute rushes this year!
+15/11/21, 14:15 - User4: Smart move @User3! I always leave it too late 😅
+28/11/21, 18:00 - User4: Hey @User1, did you manage to find a good gift for your brother?
+28/11/21, 18:05 - User1: I did! Got him some cool wireless earbuds 🎧 He’ll love them.
+28/11/21, 18:10 - User3: That's a great gift idea, @User1!
+28/11/21, 18:15 - User2: @User1 Nice! I might steal that idea for my cousin 😂
+05/12/21, 10:00 - User1: Morning, everyone! It's almost Christmas time 🎄
+05/12/21, 10:05 - User2: So excited! 🎅 Anyone have special plans?
+05/12/21, 10:10 - User3: Just staying in and spending time with family 🏠
+05/12/21, 10:15 - User4: Same here! @User2, what about you?
+05/12/21, 10:20 - User2: I’ll be visiting my grandparents. Looking forward to it 😊
+15/12/21, 19:00 - User1: Who wants to do a Secret Santa exchange? 🎁
+15/12/21, 19:05 - User3: I’m in! That sounds fun 🎉
+15/12/21, 19:10 - User2: Count me in too, @User1!
+15/12/21, 19:15 - User4: Me too! Love the holiday spirit ✨
+20/12/21, 11:00 - User1: @User2 @User3 @User4 Let’s draw names for Secret Santa today!
+20/12/21, 11:05 - User2: Yes, can’t wait to see who I get!
+20/12/21, 11:10 - User3: Hope I get someone easy to shop for 😂
+20/12/21, 11:15 - User4: @User3 Same here! I’m terrible at picking gifts 😅
+25/12/21, 09:00 - User1: Merry Christmas, everyone! 🎅🎄
+25/12/21, 09:05 - User2: Merry Christmas! 🎁 Hope everyone has a wonderful day.
+25/12/21, 09:10 - User3: Merry Christmas! Enjoy the time with loved ones ❤️
+25/12/21, 09:15 - User4: Merry Christmas! Sending you all lots of love and joy 😊
+31/12/21, 23:55 - User1: Almost midnight! Who's ready to say goodbye to 2021? 🎉
+31/12/21, 23:56 - User2: I am! Bring on 2022! 🥳
+31/12/21, 23:57 - User3: @User1 @User2 It’s been a crazy year, but here’s to new beginnings! 🍾
+31/12/21, 23:58 - User4: Counting down with you all! Happy New Year in advance 🎊
+01/01/22, 00:00 - User1: Happy New Year, everyone! 🥂
+01/01/22, 00:01 - User2: We made it! 🎆 Happy New Year!
+01/01/22, 00:02 - User3: Cheers to 2022, may it be an amazing year ✨
+01/01/22, 00:03 - User4: @User3 Absolutely! Happy New Year, friends! 🎇
+
