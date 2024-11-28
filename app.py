@@ -351,7 +351,7 @@ else:
                             ax7.pie(activity_pct, radius=4, pctdistance=0.8, autopct="%1.2f%%", startangle=30)
                             ax7.legend(activity_pct.index, fontsize=32, loc="center left",
                                        bbox_to_anchor=(2.15, 0, 0.5, 3.25))
-                            st.pyplot(fig7, dpi=600, bbox_inches="tight")
+                            st.pyplot(fig7, dpi=600)
                             with st.expander("What is this?"):
                                 st.markdown("""<p class="content">The "Contribution in Conversation" plot uses a pie chart to show how 
                                 different members participate in the chat. You'll get a visual breakdown of who's 
